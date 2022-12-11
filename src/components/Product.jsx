@@ -22,8 +22,8 @@ const ProductItem = styled.div`
 `;
 
 const ProductImg = styled.img`
-  width: 280px;
-  height: 280px;
+  width: 100%;
+  max-height: 300px;
   margin-bottom: 1em;
 `;
 
@@ -37,10 +37,10 @@ const ProductText = styled.p`
 
 const ProductBtn = styled.button`
   width: 100%;
+  height: 50px;
   border: ${({ select }) => (select ? "1px solid #46972b" : "#fff ")};
   background: ${({ select }) => (select ? "#fff" : "#46972b ")};
   color: ${({ select }) => (select ? "#46972b" : "#fff ")};
-  line-height: 50px;
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 500;

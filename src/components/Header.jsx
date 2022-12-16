@@ -49,7 +49,7 @@ const Link = styled.a`
     transform-origin: center;
   }
 
-  &:hover::after{
+  &:hover::after {
     transform: scaleX(1);
   }
 `;

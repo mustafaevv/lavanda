@@ -67,7 +67,7 @@ const Comments = () => {
           slidesPerView={1}
           loop={true}
           autoplay={true}
-          speed={2000}
+          speed={1500}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
         >

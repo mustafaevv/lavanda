@@ -1,30 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
-import Container from "../layout/Container";
-import item from "./productITem";
-
-const Section = styled.section`
-  padding: 100px 0;
-`;
-
-const ProductContent = styled(Container)`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2em;
-  width: 100%;
-`;
-
 const ProductItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   max-width: 300px;
   width: 100%;
+  height: 500px;
 `;
 
 const ProductImg = styled.img`
   width: 100%;
   max-height: 300px;
+  height: 100%;
   margin-bottom: 1em;
+  object-fit: cover;
 `;
 
 const ProductText = styled.p`
@@ -32,13 +23,19 @@ const ProductText = styled.p`
   font-size: 18px;
   color: #17171a;
   line-height: 1.5;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
+`;
+
+const ProductPrice = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
 `;
 
 const ProductBtn = styled.button`
   width: 100%;
   height: 50px;
-  border: ${({ select }) => (select ? "1px solid #46972b" : "#fff ")};
+  border: ${({ select }) => (select ? "2px solid #46972b" : "#fff ")};
   background: ${({ select }) => (select ? "#fff" : "#46972b ")};
   color: ${({ select }) => (select ? "#46972b" : "#fff ")};
   font-size: 18px;
@@ -46,26 +43,21 @@ const ProductBtn = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: 0.4s;
+  margin-top: auto;
 `;
 
-const Product = () => {
+const Product = ({ data }) => {
   const [select, setSelect] = useState(false);
   const handleSelected = () => setSelect((state) => !state);
-
   return (
-    <Section>
-      <ProductContent>
-        {item.map((item, index) => (
-          <ProductItem key={index}>
-            <ProductImg src={item.img} alt="" />
-            <ProductText>{item.text}</ProductText>
-            <ProductBtn select={select} onClick={handleSelected}>
-              {select ? "added" : "add"}
-            </ProductBtn>
-          </ProductItem>
-        ))}
-      </ProductContent>
-    </Section>
+    <ProductItem key={data.id}>
+      <ProductImg src={data.img} alt="" />
+      <ProductText>{data.text}</ProductText>
+      <ProductPrice>{data.price} сум</ProductPrice>
+      <ProductBtn select={select} onClick={handleSelected}>
+        {select ? "added" : "add"}
+      </ProductBtn>
+    </ProductItem>
   );
 };
 

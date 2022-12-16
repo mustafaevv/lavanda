@@ -1,16 +1,17 @@
-import React from 'react'
-import Banner from '../components/Banner'
-import Comments from '../components/Comments'
-import Product from '../components/Product'
+import React from "react";
+
+import Banner from "../components/Banner";
+import Comments from "../components/Comments";
+import ProductItems from "../components/ProductItems";
 
 const Home = () => {
   return (
-    <section>
-      <Banner/>
-      <Product/>
-      <Comments/>
-    </section>
-  )
-}
+    <main>
+      <Banner />
+      <ProductItems />
+      <Comments />
+    </main>
+  );
+};
 
-export default Home
+export default Home;

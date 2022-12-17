@@ -74,15 +74,17 @@ const Footer = () => {
       <FooterContent>
         <Logo href="/">lavanda</Logo>
         <IconList>
-          {icons.map(({ icon, link }) => (
-            <li>
-              <Icon target={"_blank"} href={link}>{icon}</Icon>
+          {icons.map(({ icon, link }, index) => (
+            <li key={index}>
+              <Icon target="_blank" href={link}>
+                {icon}
+              </Icon>
             </li>
           ))}
         </IconList>
         <List>
-          {links.map((item) => (
-            <li key={item.name}>
+          {links.map((item, index) => (
+            <li key={index}>
               <Link href={item.link}>{item.name}</Link>
             </li>
           ))}

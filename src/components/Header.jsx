@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Container from "../layout/Container";
 import links from "../router";
@@ -32,7 +33,7 @@ const List = styled.ul`
   gap: 4em;
 `;
 
-const Link = styled.a`
+const Links = styled(Link)`
   color: #17171a;
   font-size: 18px;
   text-decoration: none;
@@ -90,7 +91,7 @@ const Header = () => {
         <List>
           {links.map(({ name, link }) => (
             <li key={link}>
-              <Link href={link}>{name}</Link>
+              <Links href={link}>{name}</Links>
             </li>
           ))}
         </List>

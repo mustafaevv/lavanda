@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+
+import CartItem from "../components/CartItem";
 import Container from "../layout/Container";
 
 const Section = styled.section`
@@ -20,7 +22,7 @@ const Cart = () => {
   return (
     <Section>
       <Container>
-
+        <CartItem/>
       </Container>
     </Section>
   );

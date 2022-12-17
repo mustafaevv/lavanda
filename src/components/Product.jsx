@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { addToCart, removeFromCart } from "../redux/cart";
 
 const ProductItem = styled.div`
   display: flex;
@@ -47,8 +49,14 @@ const ProductBtn = styled.button`
 `;
 
 const Product = ({ data }) => {
+  const dispatch = useDispatch();
   const [select, setSelect] = useState(false);
-  const handleSelected = () => setSelect((state) => !state);
+  
+  const handleSelected = () => {
+    dispatch(select ? removeFromCart(data.id) : addToCart(data));
+    setSelect((state) => !state);
+  };
+
   return (
     <ProductItem key={data.id}>
       <ProductImg src={data.img} alt="" />

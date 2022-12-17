@@ -1,12 +1,6 @@
 {
   "products": [
     {
-      "id": 0,
-      "img": "/images/image.png",
-      "text": "Детские влажные салфетки Pure&Nature «Пантенол и овсяное молочко» 60 шт",
-      "price": 2000
-    },
-    {
       "id": 1,
       "img": "./images/image.png",
       "text": "Детские влажные салфетки Pure&Nature «Пантенол и овсяное молочко» 60 шт",

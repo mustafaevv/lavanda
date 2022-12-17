@@ -7,6 +7,10 @@ import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
 import Container from "../layout/Container";
 import items from "./commetsItems";
 
+const Section = styled.section`
+  padding: 100px 0;
+`;
+
 const Swipers = styled(Swiper)`
   padding: 100px 0;
   --swiper-theme-color: #46972b;
@@ -59,7 +63,7 @@ const IconRight = styled.p`
 
 const Comments = () => {
   return (
-    <section>
+    <Section>
       <Container>
         <Swipers
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -87,7 +91,7 @@ const Comments = () => {
           ))}
         </Swipers>
       </Container>
-    </section>
+    </Section>
   );
 };
 

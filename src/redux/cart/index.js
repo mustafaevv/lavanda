@@ -26,8 +26,8 @@ const cart = createSlice({
     removeOne: (state, action) => {
       if (state[action.payload].quantity > 1) {
         state[action.payload].quantity--;
+        saveToLocalStorage(state);
       }
-      saveToLocalStorage(state);
     },
   },
 });

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Hamburger from "hamburger-react";
 
 import Container from "../layout/Container";
 import links from "../router";
+import Menubar from "./Menubar";
 import { getItemsCount } from "../redux/cart";
 
 const Headers = styled.header`
@@ -31,6 +33,10 @@ const List = styled.ul`
   align-items: center;
   list-style: none;
   gap: 4em;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
 `;
 
 const Links = styled(Link)`
@@ -57,7 +63,7 @@ const Links = styled(Link)`
   }
 `;
 
-const Order = styled.a`
+const Order = styled(Link)`
   position: relative;
   color: #17171a;
   text-decoration: none;
@@ -81,7 +87,23 @@ const Counter = styled.p`
   padding: 5px;
 `;
 
+const Btn = styled.div`
+  z-index: 8888888;
+  display: none;
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: #17171a;
+
+  @media (max-width: 992px) {
+    display: block;
+  }
+`;
+
 const Header = () => {
+  const [isActive, setIsActive] = useState(false);
+  const handleClickActive = () => setIsActive((state) => !state);
+
   const cartItemCount = useSelector(getItemsCount);
 
   return (
@@ -89,16 +111,20 @@ const Header = () => {
       <HeaderContent>
         <Logo href="/">lavanda</Logo>
         <List>
-          {links.map(({ name, link }) => (
-            <li key={link}>
-              <Links href={link}>{name}</Links>
+          {links.map((item) => (
+            <li key={item.link}>
+              <Links to={item.link}>{item.name}</Links>
             </li>
           ))}
         </List>
-        <Order href="/cart">
+        <Order to="/cart">
           <HiOutlineShoppingBag />
           {Boolean(cartItemCount) && <Counter>{cartItemCount}</Counter>}
         </Order>
+        <Menubar isActive={isActive} handleClickActive={handleClickActive} />
+        <Btn>
+          <Hamburger toggled={isActive} toggle={handleClickActive} />
+        </Btn>
       </HeaderContent>
     </Headers>
   );

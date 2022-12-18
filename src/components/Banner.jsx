@@ -13,8 +13,10 @@ import "swiper/css/pagination";
 const Slides = styled.div``;
 const Img = styled.img`
   width: 100%;
+  max-height: 800px;
+  height: 100%;
 `;
-const ConteinerItem = styled(Container)`
+const ContainerItem = styled(Container)`
   .swiper {
     --swiper-theme-color: #46972b;
     --swiper-pagination-bullet-inactive-color: #fff;
@@ -37,7 +39,7 @@ const ConteinerItem = styled(Container)`
 const Banner = () => {
   return (
     <section>
-      <ConteinerItem>
+      <ContainerItem>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           slidesPerView={1}
@@ -56,7 +58,7 @@ const Banner = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </ConteinerItem>
+      </ContainerItem>
     </section>
   );
 };

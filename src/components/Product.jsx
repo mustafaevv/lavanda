@@ -48,13 +48,10 @@ const ProductBtn = styled.button`
   margin-top: auto;
 `;
 
-const Product = ({ data }) => {
+const Product = ({ data, select }) => {
   const dispatch = useDispatch();
-  const [select, setSelect] = useState(false);
-  
   const handleSelected = () => {
     dispatch(select ? removeFromCart(data.id) : addToCart(data));
-    setSelect((state) => !state);
   };
 
   return (

@@ -12,6 +12,27 @@ body{
   background: #fff;
   font-family: 'Roboto', sans-serif;
 }
+
+html,
+body,
+.App,
+#root {
+  height: 100%;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
 `;
 
 export default GlobeStyle;

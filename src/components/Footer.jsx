@@ -15,6 +15,11 @@ const FooterContent = styled(Container)`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+
+  @media (max-width: 786px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const Logo = styled.a`
@@ -23,6 +28,10 @@ const Logo = styled.a`
   font-size: 30px;
   font-weight: bold;
   text-transform: uppercase;
+
+  @media (max-width: 786px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const IconList = styled.ul`
@@ -30,6 +39,10 @@ const IconList = styled.ul`
   align-items: flex-end;
   list-style: none;
   gap: 2em;
+
+  @media (max-width: 786px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const Icon = styled.a`
@@ -42,6 +55,10 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1em;
+
+  @media (max-width: 786px) {
+    text-align: center;
+  }
 `;
 
 const Link = styled.a`
@@ -70,7 +87,7 @@ const Link = styled.a`
 
 const Footer = () => {
   return (
-    <Footers>
+    <Footers id="contact">
       <FooterContent>
         <Logo href="/">lavanda</Logo>
         <IconList>

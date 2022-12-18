@@ -3,23 +3,22 @@ import styled from "styled-components";
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 
-import { removeFromCart } from "../redux/cart";
+import { addOne, removeFromCart, removeOne } from "../redux/cart";
 
 const Cart = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 20px;
   margin-bottom: 20px;
+  border-bottom: 1px solid #000;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid #000;
-  }
 `;
 
 const Img = styled.img`
   width: 270px;
   height: 270px;
   margin-right: 15px;
+  object-fit: cover;
 `;
 
 const Name = styled.h6`
@@ -79,27 +78,23 @@ const Trash = styled.button`
   color: #17171a;
 `;
 
-const data = {
-  id: 1,
-  name: "lavanda",
-  img: "./images/image.png",
-  text: "Детские влажные салфетки Pure&Nature «Пантенол и овсяное молочко» 60 шт",
-  price: 2000,
-};
-
-const CartItem = () => {
+const CartItem = ({ data }) => {
   const dispatch = useDispatch();
+
+  const handleMinus = () => dispatch(removeOne(data.id));
+  const handlePlus = () => dispatch(addOne(data.id));
   const handleClose = () => dispatch(removeFromCart(data.id));
+
   return (
     <Cart>
       <Img src={data.img} alt="" />
       <Name>{data.name}</Name>
       <Controller>
-        <ControllerBtn>
+        <ControllerBtn onClick={handleMinus}>
           <AiOutlineMinus />
         </ControllerBtn>
-        <Counter>{data.id}</Counter>
-        <ControllerBtn>
+        <Counter>{data.quantity}</Counter>
+        <ControllerBtn onClick={handlePlus}>
           <AiOutlinePlus />
         </ControllerBtn>
       </Controller>

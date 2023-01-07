@@ -11,6 +11,7 @@ const GlobeStyle = createGlobalStyle`
 body{
   background: #fff;
   font-family: 'Roboto', sans-serif;
+  background: #f5f5ef;
 }
 
 html,

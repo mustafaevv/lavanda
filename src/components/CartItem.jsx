@@ -11,19 +11,28 @@ const Cart = styled.div`
   padding-bottom: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #000;
-
 `;
 
 const Img = styled.img`
   width: 270px;
   height: 270px;
   margin-right: 15px;
+  border-radius: 6px;
   object-fit: cover;
 `;
 
 const Name = styled.h6`
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
+  color: #17171a;
+  text-transform: capitalize;
+  max-width: 500px;
+  width: 100%;
+`;
+
+const Text = styled.p`
+  font-size: 18px;
+  font-weight: 400;
   color: #17171a;
   text-transform: capitalize;
   max-width: 500px;
@@ -89,6 +98,7 @@ const CartItem = ({ data }) => {
     <Cart>
       <Img src={data.img} alt="" />
       <Name>{data.name}</Name>
+      <Text>{data.text}</Text>
       <Controller>
         <ControllerBtn onClick={handleMinus}>
           <AiOutlineMinus />

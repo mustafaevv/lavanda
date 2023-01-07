@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 import Container from "../layout/Container";
 import Product from "./Product";
+import axios from "axios";
 
 const Section = styled.section`
   padding: 100px 0;
@@ -12,6 +13,7 @@ const Section = styled.section`
 const ProductContent = styled(Container)`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 2em;
   width: 100%;
@@ -24,26 +26,13 @@ const ProductContent = styled(Container)`
 const ProductItems = () => {
   const [data, setData] = useState(null);
   const { cart } = useSelector((state) => state);
-
-  const getData = () => {
-    fetch("http://localhost:4000/products", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (myJson) {
-        setData(myJson);
-      });
-  };
-
   useEffect(() => {
-    getData();
+    axios
+      .get("https://63071da7c0d0f2b8012710af.mockapi.io/lavanda/")
+      .then((res) => {
+        setData(res.data);
+      });
   }, []);
-
   return (
     <Section>
       <ProductContent>

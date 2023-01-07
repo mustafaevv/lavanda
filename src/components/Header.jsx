@@ -58,7 +58,7 @@ const Links = styled(Link)`
     transform-origin: center;
   }
 
-  &:hover::after {
+  &::after {
     transform: scaleX(1);
   }
 `;
@@ -67,7 +67,7 @@ const Order = styled(Link)`
   position: relative;
   color: #17171a;
   text-decoration: none;
-  font-size: 30px;
+  font-size: 40px;
 `;
 
 const Counter = styled.p`
@@ -116,11 +116,12 @@ const Header = () => {
               <Links to={item.link}>{item.name}</Links>
             </li>
           ))}
+          <Order to="/cart">
+            <HiOutlineShoppingBag />
+            {Boolean(cartItemCount) && <Counter>{cartItemCount}</Counter>}
+          </Order>
         </List>
-        <Order to="/cart">
-          <HiOutlineShoppingBag />
-          {Boolean(cartItemCount) && <Counter>{cartItemCount}</Counter>}
-        </Order>
+
         <Menubar isActive={isActive} handleClickActive={handleClickActive} />
         <Btn>
           <Hamburger toggled={isActive} toggle={handleClickActive} />

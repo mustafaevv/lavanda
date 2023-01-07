@@ -7,7 +7,7 @@ const ProductItem = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 300px;
+  max-width: 250px;
   width: 100%;
   height: 500px;
 `;
@@ -17,7 +17,8 @@ const ProductImg = styled.img`
   max-height: 300px;
   height: 100%;
   margin-bottom: 1em;
-  object-fit: cover;
+  /* object-fit: cover; */
+  border-radius: 6px;
 `;
 
 const ProductText = styled.p`
@@ -37,9 +38,9 @@ const ProductPrice = styled.p`
 const ProductBtn = styled.button`
   width: 100%;
   height: 50px;
-  border: ${({ select }) => (select ? "2px solid #46972b" : "#fff ")};
-  background: ${({ select }) => (select ? "#fff" : "#46972b ")};
-  color: ${({ select }) => (select ? "#46972b" : "#fff ")};
+  border: ${({ select }) => (select ? "3px solid #618a53" : "#f5f5ef ")};
+  background: ${({ select }) => (select ? "#f5f5ef" : "#39672a ")};
+  color: ${({ select }) => (select ? "#618a53" : "#f5f5ef ")};
   font-size: 18px;
   text-transform: capitalize;
   font-weight: 500;

@@ -3,6 +3,8 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styled from "styled-components";
 
+import img1 from "../images/img1.png";
+
 import Container from "../layout/Container";
 import images from "./bannerItems";
 
@@ -17,6 +19,10 @@ const Img = styled.img`
   height: 100%;
 `;
 const ContainerItem = styled(Container)`
+margin-top: 20px;
+  & img{
+    width: 100%;
+  }
   .swiper {
     --swiper-theme-color: #46972b;
     --swiper-pagination-bullet-inactive-color: #fff;
@@ -40,7 +46,8 @@ const Banner = () => {
   return (
     <section>
       <ContainerItem>
-        <Swiper
+      <img src={img1} alt="" />
+        {/* <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
           slidesPerView={1}
           navigation
@@ -57,7 +64,7 @@ const Banner = () => {
               </Slides>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> */}
       </ContainerItem>
     </section>
   );

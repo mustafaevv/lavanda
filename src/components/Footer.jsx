@@ -8,12 +8,12 @@ import icons from "./footerItems";
 const Footers = styled.footer`
   background: #46972b;
   width: 100%;
-  padding: 50px 0;
+  padding: 20px 0;
 `;
 
 const FooterContent = styled(Container)`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 
   @media (max-width: 786px) {
@@ -53,8 +53,8 @@ const Icon = styled.a`
 const List = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: column;
   gap: 1em;
+  margin-left: 20px;
 
   @media (max-width: 786px) {
     text-align: center;
@@ -80,32 +80,39 @@ const Link = styled.a`
     transform-origin: center;
   }
 
-  &:hover::after {
+  &::after {
     transform: scaleX(1);
   }
 `;
+
+const Items = styled.div`
+  display: flex;
+  align-items: center;
+`
 
 const Footer = () => {
   return (
     <Footers id="contact">
       <FooterContent>
         <Logo href="/">lavanda</Logo>
-        <IconList>
-          {icons.map(({ icon, link }, index) => (
-            <li key={index}>
-              <Icon target="_blank" href={link}>
-                {icon}
-              </Icon>
-            </li>
-          ))}
-        </IconList>
-        <List>
-          {links.map((item, index) => (
-            <li key={index}>
-              <Link href={item.link}>{item.name}</Link>
-            </li>
-          ))}
-        </List>
+        <Items>
+          <IconList>
+            {icons.map(({ icon, link }, index) => (
+              <li key={index}>
+                <Icon target="_blank" href={link}>
+                  {icon}
+                </Icon>
+              </li>
+            ))}
+          </IconList>
+          <List>
+            {links.map((item, index) => (
+              <li key={index}>
+                <Link href={item.link}>{item.name}</Link>
+              </li>
+            ))}
+          </List>
+        </Items>
       </FooterContent>
     </Footers>
   );

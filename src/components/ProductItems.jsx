@@ -13,9 +13,9 @@ const Section = styled.section`
 const ProductContent = styled(Container)`
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 5em;
   width: 100%;
 
   @media (max-width: 992px) {
@@ -25,14 +25,16 @@ const ProductContent = styled(Container)`
 
 const ProductItems = () => {
   const [data, setData] = useState(null);
-  const { cart } = useSelector((state) => state);
+  const { cart, like } = useSelector((state) => state);
   useEffect(() => {
     axios
-      .get("https://63071da7c0d0f2b8012710af.mockapi.io/lavanda/")
+      // .get("https://63071da7c0d0f2b8012710af.mockapi.io/lavanda/")
+      .get("http://localhost:4000/products")
       .then((res) => {
         setData(res.data);
       });
   }, []);
+  console.log(like);
   return (
     <Section>
       <ProductContent>

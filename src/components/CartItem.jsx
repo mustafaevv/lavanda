@@ -17,8 +17,12 @@ const Img = styled.img`
   width: 270px;
   height: 270px;
   margin-right: 15px;
-  border-radius: 6px;
+  border-radius: 8px;
   object-fit: cover;
+`;
+
+const CartItems = styled.div`
+  margin: 0 50px 0 20px;
 `;
 
 const Name = styled.h6`
@@ -26,14 +30,15 @@ const Name = styled.h6`
   font-weight: 600;
   color: #17171a;
   text-transform: capitalize;
-  max-width: 500px;
   width: 100%;
+  margin-bottom: 1em;
 `;
 
 const Text = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #17171a;
+  line-height: 1.3;
   text-transform: capitalize;
   max-width: 500px;
   width: 100%;
@@ -67,10 +72,11 @@ const ControllerBtn = styled.button`
 `;
 
 const Price = styled.p`
-  flex-grow: 1;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  text-align: center;
+  flex-grow: 1;
 `;
 
 const Trash = styled.button`
@@ -97,8 +103,10 @@ const CartItem = ({ data }) => {
   return (
     <Cart>
       <Img src={data.img} alt="" />
-      <Name>{data.name}</Name>
-      <Text>{data.text}</Text>
+      <CartItems>
+        <Name>{data.name}</Name>
+        <Text>{data.text}</Text>
+      </CartItems>
       <Controller>
         <ControllerBtn onClick={handleMinus}>
           <AiOutlineMinus />

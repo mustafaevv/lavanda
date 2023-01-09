@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 
 import Header from "./components/Header";
 import Cart from "./pages/Cart";
+import Favorite from "./pages/Favorite";
 import Home from "./pages/Home";
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
         <Footer />
       </BrowserRouter>

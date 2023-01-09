@@ -1,15 +1,18 @@
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { addToCart, removeFromCart } from "../redux/cart";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-const ProductItem = styled.div`
+import { addToCart, removeFromCart } from "../redux/cart";
+import { handleLike } from "../redux/favorite";
+
+const ProductBlock = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   max-width: 250px;
   width: 100%;
-  height: 500px;
+  height: 480px;
 `;
 
 const ProductImg = styled.img`
@@ -17,21 +20,32 @@ const ProductImg = styled.img`
   max-height: 300px;
   height: 100%;
   margin-bottom: 1em;
-  /* object-fit: cover; */
-  border-radius: 6px;
+  border-radius: 8px;
+  object-fit: cover;
 `;
 
 const ProductText = styled.p`
-  text-align: center;
   font-size: 18px;
-  color: #17171a;
   line-height: 1.5;
   margin-bottom: 0.5em;
+  text-transform: capitalize;
+  color: #17171a;
 `;
 
 const ProductPrice = styled.p`
   font-size: 16px;
   font-weight: bold;
+  color: #000;
+`;
+
+const ProductItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const ProductInfo = styled.p`
+  font-size: 18px;
   color: #000;
 `;
 
@@ -49,21 +63,45 @@ const ProductBtn = styled.button`
   margin-top: auto;
 `;
 
-const Product = ({ data, select }) => {
+const ProductButtonLike = styled.button`
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  font-size: 22px;
+  border: none;
+  outline: none;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #618a53;
+  cursor: pointer;
+`;
+
+const Product = ({ data, select, liked }) => {
   const dispatch = useDispatch();
-  const handleSelected = () => {
+  const handleSelected = () =>
     dispatch(select ? removeFromCart(data.id) : addToCart(data));
-  };
+  const handleSelectLike = () => dispatch(handleLike(data));
 
   return (
-    <ProductItem key={data.id}>
+    <ProductBlock key={data.id}>
+      <ProductButtonLike onClick={handleSelectLike}>
+        {liked ? <AiFillHeart /> : <AiOutlineHeart />}
+      </ProductButtonLike>
       <ProductImg src={data.img} alt="" />
-      <ProductText>{data.text}</ProductText>
-      <ProductPrice>{data.price} сум</ProductPrice>
+      <ProductText>{data.name}</ProductText>
+      <ProductItem>
+        <ProductInfo>{data.info}</ProductInfo>
+        <ProductPrice>{data.price} сум</ProductPrice>
+      </ProductItem>
       <ProductBtn select={select} onClick={handleSelected}>
-        {select ? "added" : "add"}
+        {select ? "added" : "В корзину"}
       </ProductBtn>
-    </ProductItem>
+    </ProductBlock>
   );
 };
 

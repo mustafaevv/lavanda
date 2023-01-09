@@ -8,7 +8,7 @@ const Navbar = styled.nav`
   right: ${({ isActive }) => (isActive ? "0" : "-100%")};
   top: 0%;
   overflow: hidden;
-  width: 100%;
+  width: 40%;
   height: 100vh;
   z-index: 100;
   transition: 0.6s ease-in-out;

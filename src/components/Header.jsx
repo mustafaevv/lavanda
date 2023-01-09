@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { HiOutlineShoppingBag } from "react-icons/hi";
+import { HiOutlineShoppingBag, HiOutlineHeart } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
@@ -78,7 +78,7 @@ const Counter = styled.p`
   border-radius: 10px;
   color: #fff;
   font-size: 16px;
-  min-width: 20px;
+  min-width: 26px;
   height: 20px;
   display: flex;
   align-items: center;
@@ -100,6 +100,13 @@ const Btn = styled.div`
   }
 `;
 
+const Favorite = styled(Link)`
+  position: relative;
+  color: #17171a;
+  text-decoration: none;
+  font-size: 40px;
+`;
+
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const handleClickActive = () => setIsActive((state) => !state);
@@ -116,6 +123,9 @@ const Header = () => {
               <Links to={item.link}>{item.name}</Links>
             </li>
           ))}
+          <Favorite to="/favorite">
+            <HiOutlineHeart />
+          </Favorite>
           <Order to="/cart">
             <HiOutlineShoppingBag />
             {Boolean(cartItemCount) && <Counter>{cartItemCount}</Counter>}

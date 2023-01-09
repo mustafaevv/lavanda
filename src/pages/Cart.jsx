@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 import CartItem from "../components/CartItem";
+import Modal from "../components/CartModal";
 import Title from "../components/Title";
 import Container from "../layout/Container";
 
@@ -12,8 +13,8 @@ const Section = styled.section`
 
 const Block = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
   margin-top: 30px;
 `;
 
@@ -22,6 +23,7 @@ const TotalItem = styled.p`
   font-weight: bold;
   color: #000;
   text-transform: capitalize;
+  margin-bottom: 1em;
 `;
 
 const TotalPrice = styled.p`
@@ -48,9 +50,12 @@ const Button = styled.button`
   font-size: 18px;
   font-weight: 500;
   text-transform: capitalize;
+  cursor: pointer;
 `;
 
 const Cart = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const { cart } = useSelector((state) => state);
   const items = Object.values(cart);
   const cartEmpty = items.length === 0;
@@ -70,13 +75,14 @@ const Cart = () => {
         )}
         {!cartEmpty && (
           <Block>
-            <TotalItem>count {count}</TotalItem>
-            <TotalPrice>Сум {total}</TotalPrice>
+            <TotalItem>count: {count}</TotalItem>
+            <TotalPrice>Сум: {total}</TotalPrice>
           </Block>
         )}
         {!cartEmpty && (
           <ButtonController>
-            <Button>send</Button>
+            <Button onClick={() => setIsOpen(!isOpen)}>Open Modal</Button>
+            {isOpen ? <Modal setIsOpen={setIsOpen} /> : ""}
           </ButtonController>
         )}
       </Container>

@@ -4,6 +4,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import { addToCart, removeFromCart } from "../redux/cart";
 import { handleLike } from "../redux/favorite";
+import { useState } from "react";
 
 const ProductBlock = styled.div`
   position: relative;
@@ -81,16 +82,18 @@ const ProductButtonLike = styled.button`
   cursor: pointer;
 `;
 
-const Product = ({ data, select, liked }) => {
+const Product = ({ data, select, like }) => {
   const dispatch = useDispatch();
-  const handleSelected = () =>
+
+  const handleSelected = () => {
     dispatch(select ? removeFromCart(data.id) : addToCart(data));
+  };
   const handleSelectLike = () => dispatch(handleLike(data));
 
   return (
     <ProductBlock key={data.id}>
       <ProductButtonLike onClick={handleSelectLike}>
-        {liked ? <AiFillHeart /> : <AiOutlineHeart />}
+        {like ? <AiFillHeart /> : <AiOutlineHeart />}
       </ProductButtonLike>
       <ProductImg src={data.img} alt="" />
       <ProductText>{data.name}</ProductText>

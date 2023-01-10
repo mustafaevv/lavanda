@@ -5,8 +5,8 @@ import favorite from "./favorite";
 
 const store = configureStore({
   reducer: {
-    cart,
     favorite,
+    cart
   },
 });
 

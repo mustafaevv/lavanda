@@ -69,9 +69,14 @@ const Cart = () => {
     <Section>
       <Container>
         {cartEmpty ? (
-          <Title />
+          <Title>Cart Empty</Title>
         ) : (
-          items.map((card) => <CartItem key={card.id} data={card} />)
+          <>
+            <Title>Cart</Title>
+            {items.map((card) => (
+              <CartItem key={card.id} data={card} />
+            ))}
+          </>
         )}
         {!cartEmpty && (
           <Block>

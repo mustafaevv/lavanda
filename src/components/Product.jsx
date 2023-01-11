@@ -4,7 +4,6 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import { addToCart, removeFromCart } from "../redux/cart";
 import { handleLike } from "../redux/favorite";
-import { useState } from "react";
 
 const ProductBlock = styled.div`
   position: relative;
